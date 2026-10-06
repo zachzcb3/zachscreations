@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects – Your Name</title>
+<meta name="description" content="Selected projects by Your Name.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html">Your Name</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="cv.html">CV &amp; Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Projects</h1>
+  <p class="lead">A selection of work I'm proud of.</p>
+
+  <!-- Copy one .project block per project -->
+  <article class="project">
+    <h3>Project name</h3>
+    <p>One or two sentences on the problem, your role, and the result.</p>
+    <ul class="tags"><li>Tool or skill</li><li>Tool or skill</li></ul>
+    <div class="links">
+      <a href="https://example.com">View project</a>
+      <a href="https://github.com/your-username/repo">Source code</a>
+    </div>
+  </article>
+
+  <article class="project">
+    <h3>Second project</h3>
+    <p>One or two sentences on the problem, your role, and the result.</p>
+    <ul class="tags"><li>Tool or skill</li><li>Tool or skill</li></ul>
+    <div class="links"><a href="https://example.com">View project</a></div>
+  </article>
+</main>
+
+<footer><div class="wrap">&copy; <span id="y"></span> Your Name</div></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
