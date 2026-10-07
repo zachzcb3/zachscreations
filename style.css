@@ -62,9 +62,9 @@ p{max-width:68ch;margin:0 0 1rem}
 footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
 footer .wrap{padding-top:1.25rem;padding-bottom:1.25rem}
 
-.hero{display:grid;grid-template-columns:1fr 140px;gap:3rem;align-items:center}
-.portrait{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px}
-@media (max-width:320px){
+.hero{display:grid;grid-template-columns:1fr 25%;gap:2rem;align-items:center;margin-bottom:1.5rem}
+.portrait{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px;border:3px solid var(--line)}
+@media (max-width:640px){
   .job,.contact-list li{grid-template-columns:1fr;gap:.25rem}
   main{padding-top:2.5rem}
 }
