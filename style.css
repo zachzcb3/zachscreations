@@ -65,4 +65,10 @@ footer .wrap{padding-top:1.25rem;padding-bottom:1.25rem}
 @media (max-width:640px){
   .job,.contact-list li{grid-template-columns:1fr;gap:.25rem}
   main{padding-top:2.5rem}
+
+.hero{display:grid;grid-template-columns:1fr 280px;gap:3rem;align-items:center}
+.portrait{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px}
+@media (max-width:640px){
+.hero{grid-template-columns:1fr}
+.portrait{max-width:220px;order:-1}
 }
