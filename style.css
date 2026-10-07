@@ -67,6 +67,5 @@ footer .wrap{padding-top:1.25rem;padding-bottom:1.25rem}
 @media (max-width:640px){
   .job,.contact-list li{grid-template-columns:1fr;gap:.25rem}
   main{padding-top:2.5rem}
-.hero{grid-template-columns:1fr}
 .portrait{max-width:220px;order:-1}
 }
