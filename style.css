@@ -1,9 +1,6 @@
 :root{
-  --bg:#EEF1F4; --panel:#E2E8EE; --ink:#16202B; --muted:#52606E; --line:#C5CED8; --accent:#1F4FD8; --accent-ink:#fff;
+  --bg:#F3F2EA; --panel:#E6E4D3; --ink:#1F2418; --muted:#5E6350; --line:#D3D1BC; --accent:#5C7A2E; --accent-ink:#fff;
   --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
-}
-@media (prefers-color-scheme:dark){
-  :root{--bg:#0F1620;--panel:#18222F;--ink:#E7ECF2;--muted:#9AA8B8;--line:#2A3646;--accent:#6D93FF;--accent-ink:#0F1620}
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--sans)}
