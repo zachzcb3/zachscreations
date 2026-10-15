@@ -1,5 +1,5 @@
 :root{
-  --bg:#F4F2F2; --panel:#E8E3E3; --ink:#201A1A; --muted:#665C5C; --line:#D3CACA; --accent:#B3261E; --accent-ink:#fff;
+  --bg:#F0F4F1; --panel:#DFE8E2; --ink:#12201A; --muted:#4A5F54; --line:#C3D2C8; --accent:#1E6B4A; --accent-ink:#fff;
   --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
