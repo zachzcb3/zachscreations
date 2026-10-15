@@ -49,25 +49,25 @@
     <div class="gallery">
   <figure><a href="images/Star Schema - factSales.pdf" target="_blank" rel="noopener"><img alt="Star Schema Data Layout - Fact Tables" loading="lazy"></a><figcaption>
     This is our semi-Star schema with our fact table, “factSales”, in the center. The tables “dimStore”, “dimCustomer”, and “dimProduct” each have a connecting element to the factSales table which enables us to access information between primary and foreign keys. 
-</figcaption></figure><br><br>
+</figcaption></figure><br>
   <figure><a href="images/powerbi1.png" target="_blank" rel="noopener"><img src="images/powerbi1.png" alt="What are our top selling products by volume per category?" loading="lazy"></a><figcaption>Top selling products by volume per category. The top selling category is Computers, followed
-  by Cell Phones, and Music, Movies, and Audiobooks. The sum of the factSales[Quantity] per dimProduct[CategoryName] were utilized for this visualization.</figcaption></figure><br><br>
+  by Cell Phones, and Music, Movies, and Audiobooks. The sum of the factSales[Quantity] per dimProduct[CategoryName] were utilized for this visualization.</figcaption></figure><br>
   <figure><a href="images/powerbi2.png" target="_blank" rel="noopener"><img src="images/powerbi2.png" alt="What are our top selling products by sales revenue?" loading="lazy"></a><figcaption>Top selling products by sales revenue. Using a DAX expression,
-  we were able to create a "Sales Revenue" column via: <pre>SUMX(factSales, factSales[Quantity] * factSales[NetPrice])</pre>The NetPrice column was used instead of the UnitPrice as it accounts for different currency exchange rates.</figcaption></figure><br><br>
+  we were able to create a "Sales Revenue" column via: <pre>SUMX(factSales, factSales[Quantity] * factSales[NetPrice])</pre>The NetPrice column was used instead of the UnitPrice as it accounts for different currency exchange rates.</figcaption></figure><br>
   <figure><a href="images/powerbi3.png" target="_blank" rel="noopener"><img src="images/powerbi3.png" alt="What are our top selling stores by sales revenue?" loading="lazy"></a><figcaption>Top selling stores by sales revenue. The visualization here can 
-  seem a bit misleading because the Online Store blows all other stores out of the water in terms of Sales Revenue, which especially makes sense in today's context. See below for a better variation.</figcaption></figure><br><br>
+  seem a bit misleading because the Online Store blows all other stores out of the water in terms of Sales Revenue, which especially makes sense in today's context. See below for a better variation.</figcaption></figure><br>
   <figure><a href="images/powerbi3.2.png" target="_blank" rel="noopener"><img src="images/powerbi3.2.png" loading="lazy"></a><figcaption>Top selling stores by sales revenue, excluding the Online Store. Noticeably, there is now
-  far more competition illustrated between the other stores. This was calculated utilizing the DAX expression of Sales Revenue created earlier, followed by dimStore[Description].</figcaption></figure><br><br>
+  far more competition illustrated between the other stores. This was calculated utilizing the DAX expression of Sales Revenue created earlier, followed by dimStore[Description].</figcaption></figure><br>
   <figure><a href="images/powerbi4.png" target="_blank" rel="noopener"><img src="images/powerbi4.png" alt="What are the most profitable product categories?" loading="lazy"></a><figcaption>The most profitable product category. The custom column
-  "Total Profit" was created using yet another DAX expression, <pre>SUMX(factSales, factSales[Quantity] * (factSales[NetPrice] - factSales[UnitCost]))</pre>which was then correlated with dimProduct[CategoryName].</figcaption></figure><br><br>
+  "Total Profit" was created using yet another DAX expression, <pre>SUMX(factSales, factSales[Quantity] * (factSales[NetPrice] - factSales[UnitCost]))</pre>which was then correlated with dimProduct[CategoryName].</figcaption></figure><br>
   <figure><a href="images/powerbi5.png" target="_blank" rel="noopener"><img src="images/powerbi5.png" alt="How long do online customers wait for delivery?" loading="lazy"></a><figcaption>Average length of delivery for online customers. Though the visualization itself
-  is pretty straightforward and not very spectacular to visualize, it does indeed show that delivery time for online orders takes an average of about three days.</figcaption></figure><br><br>
+  is pretty straightforward and not very spectacular to visualize, it does indeed show that delivery time for online orders takes an average of about three days.</figcaption></figure><br>
   <figure><a href="images/powerbi6.png" target="_blank" rel="noopener"><img src="images/powerbi6.png" alt="How have monthly sales and profit changed from 2021 to 2024?" loading="lazy"></a><figcaption>Monthly sales and profit changes, 2021 - 2024. As a bivariate line graph,
-  this illustrates how between the three recorded years, 2022 had the highest revenue and profit overall (shaded in the green), and was calculated utilzed the two Sales Revenue and Total Profit DAX expression columns from previous.</figcaption></figure>
+  this illustrates how between the three recorded years, 2022 had the highest revenue and profit overall (shaded in the green), and was calculated utilzed the two Sales Revenue and Total Profit DAX expression columns from previous.</figcaption></figure><br>
   <figure><a href="images/powerbi7.png" target="_blank" rel="noopener"><img src="images/powerbi7.png" alt="Which age groups spend the most, and what product categories do they buy?" loading="lazy"></a><figcaption>Age groups that spend the most and their favorite category. This data
   doesn't seem too surprising with the more elderly folk usually having more dispensable and retirement income than younger generations, of which this data also denotes their favorite
-  category being Computers. It would also make sense that Cell Phones and Home Appliances would be close as well considering the normal pricing for such items.</figcaption></figure>
-  <figure><a href="images/powerbi8.png" target="_blank" rel="noopener"><img src="images/powerbi8.png" alt="Which genders spend the most, and where to they live?" loading="lazy"></a><figcaption>Gender that spends the most per country.</figcaption></figure>
+  category being Computers. It would also make sense that Cell Phones and Home Appliances would be close as well considering the normal pricing for such items.</figcaption></figure><br>
+  <figure><a href="images/powerbi8.png" target="_blank" rel="noopener"><img src="images/powerbi8.png" alt="Which genders spend the most, and where to they live?" loading="lazy"></a><figcaption>Gender that spends the most per country.</figcaption></figure><br>
 </div>
   </article>
 
