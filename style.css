@@ -71,7 +71,7 @@ footer .wrap{padding-top:1.25rem;padding-bottom:1.25rem}
   .intro{grid-template-columns:1fr}
   .intro-photo{order:-1;width:140px;height:140px}
   .stack{display:grid;gap:1.5rem;margin-top:1.25rem;justify-items:start}
-.stack figure{margin:0;max-width:100%}
+.stack figure{margin:2;max-width:100%}
 .stack img{display:block;max-width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
 .stack figcaption{font-size:.88rem;color:var(--muted);margin-top:.4rem}
 }
