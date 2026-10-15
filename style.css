@@ -1,5 +1,7 @@
 :root{
-  --bg:#F1F5F1; --panel:#E0EAE1; --ink:#14221A; --muted:#4F6256; --line:#C4D3C7; --accent:#2F7D4F; --accent-ink:#fff;
+  color-scheme:dark;
+  --bg:#10261B; --panel:#183526; --ink:#F2EBDD; --muted:#C2B58F; --line:#2F5240;
+  --accent:#D2B97F;--btn:#B3202B; --btn-ink:#fff;
   --serif:"Newsreader",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
@@ -29,8 +31,8 @@ p{max-width:68ch;margin:0 0 1rem}
 .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
 .btn{display:inline-block;padding:.7rem 1.2rem;border:1.5px solid var(--ink);border-radius:6px;text-decoration:none;font-weight:600}
 .btn:hover{background:var(--panel)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.btn.primary:hover{filter:brightness(1.08);background:var(--accent)}
+.btn.primary{background:var(--btn);border-color:var(--btn);color:var(--btn-ink)}
+.btn.primary:hover{filter:brightness(1.15);background:var(--btn)}
 
 /* CV timeline */
 .job{display:grid;grid-template-columns:130px 1fr;gap:1.5rem;padding-bottom:1.75rem;margin-bottom:1.75rem;border-bottom:1px dashed var(--line)}
