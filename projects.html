@@ -48,7 +48,12 @@
     <p>Given a Fact table known as "factSales", these visualizations are a demonstration of conducting some other information
       exploration and analysis using PowerBI.</p>
     <ul class="tags"><li>PowerBI</li><li>Data Visualization</li><li>Power Query</li></ul>
-    <div class="gallery">
+    <details class="gallery-toggle">
+      <summary>
+        <span class="thumb-stack" aria-hidden="true"><img src="images/powerbi3.png" alt="" loading="lazy"><img src="images/powerbi2.png" alt="" loading="lazy"><img src="images/powerbi1.png" alt="" loading="lazy"></span>
+        <span class="summary-label"><span class="when-closed">View the full gallery</span><span class="when-open">Hide the gallery</span><small>10 visualizations with captions</small></span>
+      </summary>
+      <div class="gallery">
   <figure><object class="pdf-embed" data="images/Star%20Schema%20-%20factSales.pdf" type="application/pdf" aria-label="Star Schema Data Layout - Fact Tables"><a href="images/Star%20Schema%20-%20factSales.pdf" target="_blank" rel="noopener">Open the star schema diagram (PDF)</a></object><figcaption>
     This is our semi-Star schema with our fact table, “factSales”, in the center. The tables “dimStore”, “dimCustomer”, and “dimProduct” each have a connecting element to the factSales table which enables us to access information between primary and foreign keys. 
 </figcaption></figure>
@@ -71,6 +76,7 @@
   category being Computers. It would also make sense that Cell Phones and Home Appliances would be close as well considering the normal pricing for such items.</figcaption></figure>
   <figure><a href="images/powerbi8.png" target="_blank" rel="noopener"><img src="images/powerbi8.png" alt="Which genders spend the most, and where do they live?" loading="lazy"></a><figcaption>Gender that spends the most per country.</figcaption></figure>
 </div>
+    </details>
   </article>
 
   <article class="project">
@@ -90,5 +96,10 @@
 
 <footer><div class="wrap">&copy; <span id="y"></span> Zach Brooks</div></footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>
+(function(){var c=[];
+addEventListener('beforeprint',function(){c=[];document.querySelectorAll('details:not([open])').forEach(function(d){c.push(d);d.open=true})});
+addEventListener('afterprint',function(){c.forEach(function(d){d.open=false});c=[]});})();
+</script>
 </body>
 </html>
