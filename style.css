@@ -74,4 +74,11 @@ footer .wrap{padding-top:1.25rem;padding-bottom:1.25rem}
 .stack figure{margin:2;max-width:100%}
 .stack img{display:block;max-width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
 .stack figcaption{font-size:.88rem;color:var(--muted);margin-top:.4rem}
+
+  @media print{
+  :root{--bg:#fff;--panel:#f2f2f2;--ink:#000;--muted:#333;--line:#ccc;--accent:#14532d}
+  header,footer,main > p:first-child,.pdf-embed{display:none}
+  .gallery{display:block}
+  .gallery figure{break-inside:avoid;margin:0 0 1.2rem}
+  .gallery img{max-width:100%;height:auto}
 }
