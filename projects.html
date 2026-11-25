@@ -87,39 +87,60 @@
   category being Computers. It would also make sense that Cell Phones and Home Appliances would be close as well considering the normal pricing for such items.</figcaption></figure>
 </div>
     </details>
-<svg xmlns="http://www.w3.org/2000/svg" width="680" height="440" viewBox="0 0 680 440"
-     font-family="Helvetica, Arial, sans-serif" role="img">
-  <title>Global burned area by land cover, indexed, 2002-2022</title>
-  <rect width="680" height="440" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="440" viewBox="0 0 680 440" font-family="Helvetica, Arial, sans-serif" role="img">
+<title>Global burned area by land cover, indexed, 2002-2022</title>
+<desc>Burned area indexed to the 2002-2004 average (=100). By 2022: shrub/grass 65, croplands 68, savannas 80, forests 94.</desc>
+<rect width="680" height="440" fill="#ffffff"/>
+<text x="48" y="24" font-size="16" font-weight="500" fill="#0b0b0b">Global burned area by land cover (index, 2002-2004 avg = 100)</text>
 
-  <text x="48" y="24" font-size="16" fill="#0b0b0b">
-    Global burned area by land cover (index, 2002-2004 avg = 100)
-  </text>
+<g transform="translate(0,36)">
 
-  <g transform="translate(0,36)">
+  <!-- Gridlines and y-axis labels -->
+  <line x1="48" x2="570" y1="340" y2="340" stroke="#e1e0d9" stroke-width="1"/>
+  <text fill="#52514e" font-size="12" x="40" y="344" text-anchor="end">40</text>
+  <line x1="48" x2="570" y1="287" y2="287" stroke="#e1e0d9" stroke-width="1"/>
+  <text fill="#52514e" font-size="12" x="40" y="291" text-anchor="end">60</text>
+  <line x1="48" x2="570" y1="233" y2="233" stroke="#e1e0d9" stroke-width="1"/>
+  <text fill="#52514e" font-size="12" x="40" y="237" text-anchor="end">80</text>
+  <line x1="48" x2="570" y1="180" y2="180" stroke="#e1e0d9" stroke-width="1.5"/>
+  <text fill="#52514e" font-size="12" x="40" y="184" text-anchor="end">100</text>
+  <line x1="48" x2="570" y1="127" y2="127" stroke="#e1e0d9" stroke-width="1"/>
+  <text fill="#52514e" font-size="12" x="40" y="131" text-anchor="end">120</text>
+  <line x1="48" x2="570" y1="73" y2="73" stroke="#e1e0d9" stroke-width="1"/>
+  <text fill="#52514e" font-size="12" x="40" y="77" text-anchor="end">140</text>
+  <line x1="48" x2="570" y1="20" y2="20" stroke="#e1e0d9" stroke-width="1"/>
+  <text fill="#52514e" font-size="12" x="40" y="24" text-anchor="end">160</text>
 
-    <!-- gridline + y label (repeated for 40, 60 ... 160) -->
-    <line x1="48" x2="570" y1="180" y2="180" stroke="#e1e0d9" stroke-width="1.5"/>
-    <text x="40" y="184" text-anchor="end" font-size="12" fill="#52514e">100</text>
+  <!-- X-axis labels -->
+  <text fill="#52514e" font-size="12" x="48" y="366" text-anchor="middle">2002</text>
+  <text fill="#52514e" font-size="12" x="178" y="366" text-anchor="middle">2007</text>
+  <text fill="#52514e" font-size="12" x="309" y="366" text-anchor="middle">2012</text>
+  <text fill="#52514e" font-size="12" x="440" y="366" text-anchor="middle">2017</text>
+  <text fill="#52514e" font-size="12" x="570" y="366" text-anchor="middle">2022</text>
 
-    <!-- x labels -->
-    <text x="48"  y="366" text-anchor="middle" font-size="12" fill="#52514e">2002</text>
-    <text x="570" y="366" text-anchor="middle" font-size="12" fill="#52514e">2022</text>
+  <!-- Forests -->
+  <polyline points="48.0,237.7 74.1,157.6 100.2,144.7 126.3,159.2 152.4,178.5 178.5,139.3 204.6,179.8 230.7,188.9 256.8,113.2 282.9,191.4 309.0,169.2 335.1,203.9 361.2,194.3 387.3,168.3 413.4,162.4 439.5,185.0 465.6,208.7 491.7,152.2 517.8,162.3 543.9,183.2 570.0,195.8" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
 
-    <!-- one polyline per land cover: 21 "x,y" pairs, one per year -->
-    <polyline points="48,237.7 74.1,157.6 100.2,144.7 ... 570,195.8"
-              fill="none" stroke="#2a78d6" stroke-width="2"
-              stroke-linejoin="round" stroke-linecap="round"/>   <!-- forests -->
-    <polyline points="48,192.4 74.1,162 ... 570,232.1" stroke="#eb6834" .../>  <!-- savannas -->
-    <polyline points="48,151.1 74.1,214.1 ... 570,274.6" stroke="#eda100" .../> <!-- shrub/grass -->
-    <polyline points="48,177.7 74.1,191.7 ... 570,265.8" stroke="#6250d6" .../> <!-- croplands -->
+  <!-- Savannas -->
+  <polyline points="48.0,192.4 74.1,162.0 100.2,185.5 126.3,152.3 152.4,205.3 178.5,172.0 204.6,182.5 230.7,211.4 256.8,188.6 282.9,200.5 309.0,195.8 335.1,212.8 361.2,211.2 387.3,210.9 413.4,204.1 439.5,226.7 465.6,223.0 491.7,230.0 517.8,210.5 543.9,231.3 570.0,232.1" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
 
-    <!-- end marker + direct label -->
-    <circle cx="570" cy="195.8" r="4" fill="#2a78d6"/>
-    <text x="582" y="200" font-size="14" font-weight="500" fill="#0b0b0b">Forests 94</text>
-    <!-- ...same pattern for the other three -->
+  <!-- Shrub / grass -->
+  <polyline points="48.0,151.1 74.1,214.1 100.2,174.8 126.3,207.4 152.4,190.4 178.5,181.8 204.6,219.2 230.7,241.0 256.8,222.9 282.9,151.4 309.0,163.0 335.1,259.4 361.2,237.0 387.3,236.1 413.4,263.7 439.5,230.7 465.6,249.6 491.7,269.1 517.8,276.8 543.9,252.7 570.0,274.6" fill="none" stroke="#eda100" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
 
-  </g>
+  <!-- Croplands -->
+  <polyline points="48.0,177.7 74.1,191.7 100.2,170.6 126.3,138.4 152.4,172.0 178.5,176.7 204.6,154.5 230.7,194.1 256.8,213.2 282.9,218.1 309.0,227.2 335.1,253.2 361.2,217.0 387.3,221.9 413.4,230.8 439.5,219.1 465.6,276.9 491.7,240.4 517.8,243.7 543.9,254.9 570.0,265.8" fill="none" stroke="#6250d6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- End markers and direct labels -->
+  <circle cx="570.0" cy="195.8" r="4" fill="#2a78d6"/>
+  <text fill="#0b0b0b" font-size="14" font-weight="500" x="582" y="200">Forests 94</text>
+  <circle cx="570.0" cy="232.1" r="4" fill="#eb6834"/>
+  <text fill="#0b0b0b" font-size="14" font-weight="500" x="582" y="236">Savannas 80</text>
+  <circle cx="570.0" cy="274.6" r="4" fill="#eda100"/>
+  <text fill="#0b0b0b" font-size="14" font-weight="500" x="582" y="287">Shrub/grass 65</text>
+  <circle cx="570.0" cy="265.8" r="4" fill="#6250d6"/>
+  <text fill="#0b0b0b" font-size="14" font-weight="500" x="582" y="266">Croplands 68</text>
+
+</g>
 </svg>
   </article>
 
