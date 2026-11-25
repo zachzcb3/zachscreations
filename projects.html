@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="https://jsdelivr.net"></script>
+<script src="https://jsdelivr.net"></script>
+<script src="https://jsdelivr.net"></script>
 </head>
 <body>
 <header>
@@ -260,8 +263,9 @@
       from the years 2002 to 2022. This could be useful information for different governments or supply chain managements in having further awareness for allocating
     resources towards disaster prevention or material (or materiel) sourcing reallocation and dissemination.</p>
     <br>
-    <script type="application/ld+json">
-      {
+    <div id="wildfire-chart" style="width: 100%; max-width: 700px;"></div>
+<script>
+  const wildfireSpec = {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": 300,
@@ -289,7 +293,8 @@
       { "field": "total", "title": "Region total (M ha)", "format": ",.0f" }
     ]
   }
-}
+};
+      vegaEmbed('#wildfire-chart', wildfireSpec);
     </script>
     <br>
     <p>This is a Javascript visualization of a 100% horizontal bar chart, using "Vega-Lite", illustrating the proportions of total burned areas by land type within each of the six continents.
