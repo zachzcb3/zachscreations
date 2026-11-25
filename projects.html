@@ -269,32 +269,141 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": 300,
-  "data": { "values": [ { "region": "Africa", "type": "Forests", "mha": 435.3 }, "...30 rows" ] },
+  "data": {
+    "values": "[30 rows: region, type, mha]"
+  },
   "transform": [
-    { "joinaggregate": [{ "op": "sum", "field": "mha", "as": "total" }], "groupby": ["region"] },
-    { "calculate": "datum.mha / datum.total", "as": "share" },
-    { "calculate": "indexof(['Forests','Savannas','Shrub/grassland','Croplands','Other'], datum.type)", "as": "order" }
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "mha",
+          "as": "total"
+        }
+      ],
+      "groupby": [
+        "region"
+      ]
+    },
+    {
+      "calculate": "datum.mha / datum.total",
+      "as": "share"
+    },
+    {
+      "calculate": "indexof(['Forests','Savannas','Shrub/grassland','Croplands','Other'], datum.type)",
+      "as": "order"
+    }
   ],
-  "mark": { "type": "bar", "strokeWidth": 1 },
+  "mark": {
+    "type": "bar",
+    "stroke": "#1a1a19",
+    "strokeWidth": 1
+  },
   "encoding": {
-    "y": { "field": "region", "type": "nominal",
-           "sort": ["Europe","Asia","North America","South America","Africa","Oceania"], "title": null },
-    "x": { "field": "mha", "type": "quantitative", "stack": "normalize",
-           "title": "Share of burned area", "axis": { "format": "%" } },
-    "color": { "field": "type", "type": "nominal", "title": "Land cover",
-               "scale": { "domain": ["Forests","Savannas","Shrub/grassland","Croplands","Other"],
-                          "range": ["#2a78d6","#eb6834","#eda100","#6250d6","#a3a29c"] } },
-    "order": { "field": "order", "type": "quantitative" },
+    "y": {
+      "field": "region",
+      "type": "nominal",
+      "sort": [
+        "Europe",
+        "Asia",
+        "North America",
+        "South America",
+        "Africa",
+        "Oceania"
+      ],
+      "title": null
+    },
+    "x": {
+      "field": "mha",
+      "type": "quantitative",
+      "stack": "normalize",
+      "title": "Share of burned area",
+      "axis": {
+        "format": "%"
+      }
+    },
+    "color": {
+      "field": "type",
+      "type": "nominal",
+      "title": "Land cover",
+      "scale": {
+        "domain": [
+          "Forests",
+          "Savannas",
+          "Shrub/grassland",
+          "Croplands",
+          "Other"
+        ],
+        "range": [
+          "#2a78d6",
+          "#eb6834",
+          "#eda100",
+          "#6250d6",
+          "#a3a29c"
+        ]
+      },
+      "sort": [
+        "Forests",
+        "Savannas",
+        "Shrub/grassland",
+        "Croplands",
+        "Other"
+      ]
+    },
+    "order": {
+      "field": "order",
+      "type": "quantitative"
+    },
     "tooltip": [
-      { "field": "region", "title": "Region" },
-      { "field": "type", "title": "Land cover" },
-      { "field": "mha", "title": "Burned area (M ha)", "format": ",.1f" },
-      { "field": "share", "title": "Share of region", "format": ".1%" },
-      { "field": "total", "title": "Region total (M ha)", "format": ",.0f" }
+      {
+        "field": "region",
+        "title": "Region"
+      },
+      {
+        "field": "type",
+        "title": "Land cover"
+      },
+      {
+        "field": "mha",
+        "title": "Burned area (M ha)",
+        "format": ",.1f"
+      },
+      {
+        "field": "share",
+        "title": "Share of region",
+        "format": ".1%"
+      },
+      {
+        "field": "total",
+        "title": "Region total (M ha)",
+        "format": ",.0f"
+      }
     ]
+  },
+  "config": {
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#f2f1ed",
+      "titleColor": "#a3a29c",
+      "gridColor": "#3a3a37",
+      "domainColor": "#3a3a37",
+      "tickColor": "#3a3a37",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#f2f1ed",
+      "titleColor": "#a3a29c",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "orient": "bottom"
+    }
   }
 };
-      vegaEmbed('#wildfire-chart', wildfireSpec);
+      vegaEmbed("wildfire-chart", wildfireSpec);
     </script>
     <br>
     <p>This is a Javascript visualization of a 100% horizontal bar chart, using "Vega-Lite", illustrating the proportions of total burned areas by land type within each of the six continents.
