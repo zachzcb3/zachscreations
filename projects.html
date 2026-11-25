@@ -259,6 +259,42 @@
     <p>This is an HTML Canvas visulization illustrating the top 10 countries with the highest total burned area in millions of hectares
       from the years 2002 to 2022. This could be useful information for different governments or supply chain managements in having further awareness for allocating
     resources towards disaster prevention or material (or materiel) sourcing reallocation and dissemination.</p>
+    <br>
+    <script>
+      {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "data": { "values": [ { "region": "Africa", "type": "Forests", "mha": 435.3 }, "...30 rows" ] },
+  "transform": [
+    { "joinaggregate": [{ "op": "sum", "field": "mha", "as": "total" }], "groupby": ["region"] },
+    { "calculate": "datum.mha / datum.total", "as": "share" },
+    { "calculate": "indexof(['Forests','Savannas','Shrub/grassland','Croplands','Other'], datum.type)", "as": "order" }
+  ],
+  "mark": { "type": "bar", "strokeWidth": 1 },
+  "encoding": {
+    "y": { "field": "region", "type": "nominal",
+           "sort": ["Europe","Asia","North America","South America","Africa","Oceania"], "title": null },
+    "x": { "field": "mha", "type": "quantitative", "stack": "normalize",
+           "title": "Share of burned area", "axis": { "format": "%" } },
+    "color": { "field": "type", "type": "nominal", "title": "Land cover",
+               "scale": { "domain": ["Forests","Savannas","Shrub/grassland","Croplands","Other"],
+                          "range": ["#2a78d6","#eb6834","#eda100","#6250d6","#a3a29c"] } },
+    "order": { "field": "order", "type": "quantitative" },
+    "tooltip": [
+      { "field": "region", "title": "Region" },
+      { "field": "type", "title": "Land cover" },
+      { "field": "mha", "title": "Burned area (M ha)", "format": ",.1f" },
+      { "field": "share", "title": "Share of region", "format": ".1%" },
+      { "field": "total", "title": "Region total (M ha)", "format": ",.0f" }
+    ]
+  }
+}
+    </script>
+    <br>
+    <p>This is a Javascript visualization, using "Vega-Lite", illustrating the proportions of total burned areas by land type within each of the six continents.
+    This kind of information could be especially useful for insurance agencies and agricultural supply chains in determining risk factors based upon a certain
+    region's volatility.</p>
   </article>
 
   <article class="project">
