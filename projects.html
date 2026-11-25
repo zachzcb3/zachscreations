@@ -160,7 +160,101 @@
   others while in an "off-season". For example, the US and Canada, in partnership with Australia, often partake in such exchanges as the fire seasons are reversed on the other
   side of the equator.</p>
     <br>
-    
+    <style>
+.burn-chart{--bc-fg:#0b0b0b;--bc-mute:#6b6a66;--bc-grid:#e1e0d9;--bc-bg:#fff;--bc-forest:#2a78d6;--bc-crop:#6250d6;--bc-btn:#f1f0ec;
+  max-width:760px;margin:0 auto;font-family:Helvetica,Arial,sans-serif;color:var(--bc-fg)}
+@media (prefers-color-scheme:dark){.burn-chart{--bc-fg:#f2f1ed;--bc-mute:#a3a29c;--bc-grid:#3a3a37;--bc-bg:#1a1a19;--bc-forest:#5aa0f0;--bc-crop:#9a8cf5;--bc-btn:#2a2a28}}
+.burn-chart h2{font-size:20px;font-weight:500;margin:0 0 4px}
+.burn-chart p{margin:0 0 14px;color:var(--bc-mute);font-size:14px;line-height:1.5}
+.burn-chart .bc-tabs{display:flex;gap:8px;margin-bottom:12px}
+.burn-chart button{font:inherit;font-size:14px;color:var(--bc-fg);background:var(--bc-btn);border:1px solid var(--bc-grid);border-radius:8px;padding:8px 14px;cursor:pointer}
+.burn-chart button[aria-pressed="true"]{border-color:var(--bc-fg);font-weight:500}
+.burn-chart canvas{width:100%;display:block}
+.burn-chart .bc-note{margin:12px 0 0;font-size:13px}
+</style>
+
+<div class="burn-chart" id="burnChart">
+  <h2>Where do forests and croplands burn most?</h2>
+  <p>Top 10 countries by total burned area, 2002–2022 (million hectares). Hover or tap a bar for details.</p>
+  <div class="bc-tabs">
+    <button type="button" data-key="forest" aria-pressed="true">Forests</button>
+    <button type="button" data-key="crop" aria-pressed="false">Croplands</button>
+  </div>
+  <canvas height="420"></canvas>
+  <p class="bc-note"></p>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById("burnChart");
+  var cv=root.querySelector("canvas"), ctx=cv.getContext("2d");
+  var note=root.querySelector(".bc-note"), btns=root.querySelectorAll("button");
+  var DATA={
+    forest:{total:666.5,rows:[["Democratic Republic of Congo",102.5],["Central African Republic",80.3],["Mozambique",74.8],["Zambia",69.7],["Angola",48.6],["Myanmar",39.6],["Brazil",38.1],["Tanzania",28.2],["Russia",22.4],["Bolivia",22.2]]},
+    crop:{total:654.9,rows:[["Nigeria",67.3],["India",64.1],["Russia",59.1],["China",51.4],["Chad",35.1],["Ukraine",33.4],["Brazil",27.3],["South Sudan",19.6],["Cameroon",19.2],["Sudan",19.0]]}
+  };
+  var key="forest", hover=-1, bars=[];
+  function css(n){return getComputedStyle(root).getPropertyValue(n).trim();}
+
+  function draw(){
+    var dpr=window.devicePixelRatio||1, W=cv.clientWidth, H=420;
+    if(!W) return;
+    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,W,H);
+    var d=DATA[key], rows=d.rows, color=css(key==="forest"?"--bc-forest":"--bc-crop");
+    var narrow=W<480, L=narrow?118:190, R=60, T=10, B=44, plotW=W-L-R, plotH=H-T-B;
+    var max=Math.ceil(rows[0][1]/20)*20, rowH=plotH/rows.length;
+    ctx.font="12px Helvetica, Arial, sans-serif"; ctx.textBaseline="middle";
+    for(var v=0;v<=max;v+=20){
+      var x=L+v/max*plotW;
+      ctx.strokeStyle=css("--bc-grid"); ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(x,T); ctx.lineTo(x,T+plotH); ctx.stroke();
+      ctx.fillStyle=css("--bc-mute"); ctx.textAlign="center"; ctx.fillText(v,x,T+plotH+14);
+    }
+    ctx.fillText("Burned area, 2002–2022 (million hectares)",L+plotW/2,H-10);
+    bars=[];
+    rows.forEach(function(r,i){
+      var y=T+i*rowH+rowH*0.18, h=rowH*0.64, w=r[1]/max*plotW;
+      ctx.globalAlpha=(hover===-1||hover===i)?1:0.4;
+      ctx.fillStyle=color; ctx.fillRect(L,y,w,h);
+      ctx.globalAlpha=1;
+      ctx.fillStyle=css("--bc-fg"); ctx.textAlign="right";
+      var name=r[0];
+      if(narrow&&name.length>16) name=name.replace("Democratic Republic of Congo","DR Congo").replace("Central African Republic","Central African Rep.");
+      ctx.fillText(name,L-8,y+h/2);
+      ctx.textAlign="left"; ctx.fillText(r[1].toFixed(1),L+w+6,y+h/2);
+      bars.push({y:T+i*rowH,h:rowH});
+    });
+    if(hover>-1){
+      var r=rows[hover], share=(r[1]/d.total*100).toFixed(1);
+      var txt=r[0]+": "+r[1].toFixed(1)+"M ha ("+share+"% of global)";
+      var tw=ctx.measureText(txt).width+16, tx=Math.min(W-tw-4,L+8), ty=bars[hover].y-26;
+      if(ty<2) ty=bars[hover].y+bars[hover].h+2;
+      ctx.fillStyle=css("--bc-fg"); ctx.fillRect(tx,ty,tw,22);
+      ctx.fillStyle=css("--bc-bg"); ctx.textAlign="left"; ctx.fillText(txt,tx+8,ty+11);
+    }
+    var top=rows.reduce(function(a,r){return a+r[1];},0);
+    note.textContent="These 10 countries account for "+Math.round(top/d.total*100)+"% of global "+(key==="forest"?"forest":"cropland")+" burned area over the period.";
+  }
+  function pick(e){
+    var rect=cv.getBoundingClientRect(), p=(e.touches?e.touches[0]:e), y=p.clientY-rect.top, h=-1;
+    bars.forEach(function(b,i){ if(y>=b.y&&y<b.y+b.h) h=i; });
+    if(h!==hover){hover=h;draw();}
+  }
+  cv.addEventListener("mousemove",pick);
+  cv.addEventListener("mouseleave",function(){hover=-1;draw();});
+  cv.addEventListener("touchstart",pick,{passive:true});
+  btns.forEach(function(b){
+    b.addEventListener("click",function(){
+      key=b.getAttribute("data-key"); hover=-1;
+      btns.forEach(function(x){x.setAttribute("aria-pressed",x===b);});
+      draw();
+    });
+  });
+  window.addEventListener("resize",draw);
+  draw();
+})();
+</script>
     
   </article>
 
